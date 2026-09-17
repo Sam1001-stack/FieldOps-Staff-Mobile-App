@@ -23,6 +23,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { SafeAreaProvider, SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 import { api, unwrapList } from './src/api'
 import { cardShadow, colors, statusTone } from './src/theme'
+import { Spinner } from './src/spinner'
 
 type Me = { id: string; name: string; organization?: { name: string } | null }
 type Job = {
@@ -206,7 +207,7 @@ function FieldApp() {
       <SafeAreaView style={styles.screen}>
         <StatusBar barStyle="light-content" backgroundColor={colors.bg} />
         <View style={styles.center}>
-          <Text style={styles.kicker}>FIELDOPS</Text>
+          <Spinner label="Tour wird geladen…" />
         </View>
       </SafeAreaView>
     )
@@ -255,11 +256,11 @@ function FieldApp() {
           <Pressable
             accessibilityRole="button"
             android_ripple={{ color: 'rgba(0,0,0,0.08)' }}
-            style={({ pressed }) => [styles.cta, busy && { opacity: 0.6 }, pressed && { opacity: 0.92 }]}
+            style={({ pressed }) => [styles.cta, busy && { opacity: 0.85 }, pressed && { opacity: 0.92 }]}
             onPress={login}
             disabled={busy}
           >
-            <Text style={styles.ctaText}>Anmelden</Text>
+            {busy ? <Spinner compact /> : <Text style={styles.ctaText}>Anmelden</Text>}
           </Pressable>
           <LegalLinks pages={pages} onOpen={openContent} />
         </ScrollView>
@@ -566,6 +567,8 @@ const styles = StyleSheet.create({
     marginTop: 16,
     minHeight: 56,
     justifyContent: 'center',
+    flexDirection: 'row',
+    gap: 8,
   },
   ctaText: { color: '#1A1408', fontWeight: '800', fontSize: 16 },
   ghost: { borderWidth: 1, borderColor: colors.line, borderRadius: 16, paddingVertical: 14, alignItems: 'center' },
