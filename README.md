@@ -27,6 +27,6 @@ npm run android
 # iOS: npm run ios
 ```
 
-Login: `ali.kaya@fieldops.test` / `FieldOps!2026`.
+Login: use a LIVE monteur account (not seed README accounts).
 
 Physical device against local API: set `USE_LOCAL_API` and replace the host with your machine LAN IP.
