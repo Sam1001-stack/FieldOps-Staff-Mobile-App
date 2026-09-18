@@ -7,7 +7,7 @@ React Native CLI app for Monteure (`de.fieldops.field`). Dark night-gold UI. Not
 ```
 App.tsx           Login, tour, job sheet, assignment banner, Konto + CMS pages
 src/api.ts        fetch to /api/v1 with Bearer token
-src/config.ts     Android emulator 10.0.2.2, iOS 127.0.0.1
+src/config.ts     Live API; `USE_LOCAL_API` for emulator/simulator
 src/theme.ts      Field colors + cardShadow
 ```
 
@@ -17,7 +17,7 @@ Tabs: Heute, Tour, Post, Konto. Login and Konto link to Super Admin CMS (`audien
 
 ## Run
 
-API must be on `http://127.0.0.1:8000`.
+Default API: `https://fieldops-backend-app.onrender.com`. For local Laravel, set `USE_LOCAL_API` in `src/config.ts`.
 
 ```powershell
 cd mobileapp_client/field
@@ -29,4 +29,4 @@ npm run android
 
 Login: `ali.kaya@fieldops.test` / `FieldOps!2026`.
 
-Physical device: set `API_URL` in `src/config.ts` to your machine LAN IP.
+Physical device against local API: set `USE_LOCAL_API` and replace the host with your machine LAN IP.
